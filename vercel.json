@@ -1,0 +1,11 @@
+{
+  "framework": "vue",
+  "buildCommand": "npm --prefix frontend/busca-operadoras ci || npm --prefix frontend/busca-operadoras install && npm --prefix frontend/busca-operadoras run build",
+  "outputDirectory": "frontend/busca-operadoras/dist",
+  "installCommand": "npm --prefix frontend/busca-operadoras ci || npm --prefix frontend/busca-operadoras install",
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
+
+

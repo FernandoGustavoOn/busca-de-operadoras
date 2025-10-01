@@ -38,9 +38,9 @@
 },
     methods: {
       async buscarOperadoras() {
-
         try {
-        const resposta = await axios.get(`/buscar?termo=${this.termo}`);
+        const baseURL = process.env.VUE_APP_API_URL || '';
+        const resposta = await axios.get(`${baseURL}/buscar`, { params: { termo: this.termo } });
 
         console.log("Resposta completa:", resposta);
         console.log("Dados no campo data:", resposta.data);
@@ -60,7 +60,6 @@
     console.error("Erro ao buscar operadoras:", error);
 
         }
-        
       }
     }
   };

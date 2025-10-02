@@ -4,7 +4,8 @@
   "outputDirectory": "frontend/busca-operadoras/dist",
   "installCommand": "npm --prefix frontend/busca-operadoras ci || npm --prefix frontend/busca-operadoras install",
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "VUE_APP_API_URL": "https://sua-api-no-render.onrender.com"
   }
 }
 

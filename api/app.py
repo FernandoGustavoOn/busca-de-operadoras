@@ -1,9 +1,9 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pandas as pd
 import os
 
-app = Flask(__name__, static_folder='../frontend/busca-operadoras/dist', static_url_path='')
+app = Flask(__name__)
 CORS(app)  # Permite acesso do front-end
 
 # Carregar o CSV (certifique-se de que o arquivo está na mesma pasta do app.py)
@@ -25,15 +25,10 @@ def buscar_operadoras():
     else:
         return jsonify(resultados.to_dict(orient="records"))
 
-# Rota para servir o frontend
+# Rota de health check
 @app.route('/')
-def serve_frontend():
-    return send_from_directory(app.static_folder, 'index.html')
-
-# Rota para servir arquivos estáticos
-@app.route('/<path:path>')
-def serve_static(path):
-    return send_from_directory(app.static_folder, path)
+def health_check():
+    return jsonify({"status": "API funcionando", "registros": len(df)})
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
